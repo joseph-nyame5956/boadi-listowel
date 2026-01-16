@@ -1,0 +1,8 @@
+{
+  "name": "BOADI LISTOWEL AI",
+  "description": "An advanced multimodal AI assistant powered by Gemini 3, featuring real-time chat, image generation, intelligent search grounding, and multi-auth login.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

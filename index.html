@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOADI LISTOWEL AI | Persco Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --persco-green: #065f46;
+        --persco-gold: #d4af37;
+        --persco-emerald: #10b981;
+      }
+
+      body {
+        font-family: 'Outfit', sans-serif;
+        background: #020617;
+        color: #f8fafc;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .brand-font { font-family: 'Outfit', sans-serif; }
+      .mono-font { font-family: 'JetBrains Mono', monospace; }
+
+      /* Main Background Wrapper */
+      .bg-animate {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        background: radial-gradient(circle at 50% 50%, #064e3b 0%, #020617 100%);
+        overflow: hidden;
+      }
+
+      /* Persco Background Logo */
+      .persco-background-container {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .persco-hero-logo {
+        width: 85vh;
+        height: 85vh;
+        background: url('https://upload.wikimedia.org/wikipedia/en/3/3a/St_Peters_SHS_Logo.png') no-repeat center;
+        background-size: contain;
+        opacity: 0.2; /* Increased visibility */
+        filter: drop-shadow(0 0 100px rgba(16, 185, 129, 0.4)) contrast(1.2);
+        animation: breath 12s ease-in-out infinite;
+      }
+
+      @keyframes breath {
+        0%, 100% { transform: scale(1); opacity: 0.18; }
+        50% { transform: scale(1.08); opacity: 0.25; }
+      }
+
+      /* Tech Layers */
+      .grid-overlay {
+        position: fixed;
+        inset: 0;
+        background-image: linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+        background-size: 50px 50px;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .scanlines {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(18, 16, 16, 0) 50%,
+          rgba(0, 0, 0, 0.05) 50%
+        );
+        background-size: 100% 4px;
+        z-index: 2;
+        pointer-events: none;
+        opacity: 0.2;
+      }
+
+      /* UI Components */
+      .glass-card {
+        background: rgba(15, 23, 42, 0.75);
+        backdrop-filter: blur(25px) saturate(160%);
+        -webkit-backdrop-filter: blur(25px) saturate(160%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .status-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #10b981;
+        box-shadow: 0 0 12px #10b981;
+        animation: blink 2.5s infinite;
+      }
+
+      @keyframes blink {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.85); }
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(16, 185, 129, 0.25);
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(16, 185, 129, 0.4); }
+
+      #root {
+        position: relative;
+        z-index: 10;
+        height: 100%;
+        width: 100%;
+      }
+
+      .mode-toggle-active {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+        border-color: rgba(16, 185, 129, 0.4);
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+      }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom": "https://esm.sh/react-dom@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.37.0"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div class="bg-animate">
+      <!-- Background Persco Logo Layer -->
+      <div class="persco-background-container">
+        <div class="persco-hero-logo"></div>
+      </div>
+      
+      <!-- Visual Accents -->
+      <div class="grid-overlay"></div>
+      <div class="scanlines"></div>
+      
+      <!-- App Root -->
+      <div id="root"></div>
+    </div>
+    <script type="module" src="index.tsx"></script>
+  </body>
+</html>
